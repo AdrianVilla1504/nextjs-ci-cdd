@@ -20,7 +20,7 @@ export default function Home() {
             </code>
             .
           </li>
-          <li>Cambio de prueba 1.</li>
+          <li>Prueba numero 2</li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
