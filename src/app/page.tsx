@@ -88,12 +88,12 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
+            src="https://www.youtube.com/watch?v=jPD0s6KMFpk"
             alt="Globe icon"
             width={16}
             height={16}
           />
-          Go to nextjs.org →
+          Go to Ballerina Trailer →
         </a>
       </footer>
     </div>
