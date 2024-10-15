@@ -27,6 +27,9 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Copy static folder to standalone/.next
+        run: cp -r ./next/static ./next/standalone/.next
+      
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -52,17 +55,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: 'Configure App Service settings'
-        uses: azure/appservice-settings@v1
-        with:
-          app-name: 'nextjs-ci-cd'
-          app-settings-json: '[
-            {"name": "WEBSITE_NODE_DEFAULT_VERSION", "value": "20.x"},
-            {"name": "COMMAND", "value": "node server.js"},
-            {"name": "NODE_ENV", "value": "production"}
-          ]'
-        id: settings
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -70,4 +62,4 @@ jobs:
           app-name: 'nextjs-ci-cd'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A0192550DD54E54A506C54A2BFA97BB }}
-          package: ./build/standalone
+          package: ./.next/standalone
