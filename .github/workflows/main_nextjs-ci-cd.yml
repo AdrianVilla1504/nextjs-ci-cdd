@@ -59,4 +59,16 @@ jobs:
           app-name: 'nextjs-ci-cd'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A0192550DD54E54A506C54A2BFA97BB }}
-          package: ./standalone
+          package: ./build/standalone
+      - name: 'Run server.js'
+        run: |
+          cd ./build/standalone 
+          node server.js 
+        env:
+          PORT: 8080
+      - name: 'Configure startup command'
+        uses: azure/appservice-settings@v1
+        with:
+          app-name: 'nextjs-ci-cd'
+          app-settings-json: '[{"name": "WEBSITE_RUN_FROM_PACKAGE", "value": "0"}, {"name": "WEBSITE_NODE_DEFAULT_VERSION", "value": "20.x"}, {"name": "COMMAND", "value": "node server.js"}]'
+        id: settings
