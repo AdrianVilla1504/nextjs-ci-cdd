@@ -31,7 +31,7 @@ jobs:
         run: ls -al
       
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./ -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -57,7 +57,7 @@ jobs:
 
       - name: List files just before deploy
         run: ls -al
-        
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -65,4 +65,4 @@ jobs:
           app-name: 'nextjs-ci-cd'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A0192550DD54E54A506C54A2BFA97BB }}
-          package: ./.next/standalone
+          package: ./release/.next/standalone
