@@ -59,4 +59,4 @@ jobs:
           app-name: 'nextjs-ci-cd'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A0192550DD54E54A506C54A2BFA97BB }}
-          package: ./build/standalone
+          package: ./standalone
