@@ -82,7 +82,7 @@ export default function Home() {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.youtube.com/watch?v=jPD0s6KMFpk"
+          href="https://www.youtube.com/watch?v=h31BDoxyN1U"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -93,7 +93,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Go to Ballerina Trailer →
+          Go to the movie →
         </a>
       </footer>
     </div>
